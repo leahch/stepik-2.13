@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block pagecontext %}
+    <!-- HERO -->
+    <div class="jumbotron text-center mt-4">
+      <h1 class="display-4">{{ data.title }}</h1>
+      <p class="lead">{{ data.subtitle }}</p>
+      <p class="mt-5 w-50 mx-auto">{{ data.description }}</p>
+    </div>
+
+    <!-- CARDS -->
+
+    <div class="row mt-5" data-test="cards">
+      {% import 'snippets.html' as snippets %}
+      {% for tour_id, tour in tours  %} {# from python as tuple list (id,tour) #}
+      {{ snippets.tour_card(tour_id, tour) }}
+      {% endfor %}
+    </div>
+{% endblock pagecontext %}

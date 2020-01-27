@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block pagecontext %}
+    <h1 class="display-5 mt-4">
+      Летим из <span data-test="from">{{ data.departures.get(direction, "--").split() | last }}</span></h1>
+    <p class="mb-4" >Найдено <span data-test="tourcount"> {{ tours | length }}</span> туров,
+      от <span data-test="pricemin">{{ stat.min_price }}</span>
+      до <span data-test="pricemax">{{ stat.max_price }}</span>
+      и от <span data-test="nightsmax">{{ stat.min_nights }}</span>
+      ночей до <span data-test="nightsmax">{{ stat.max_nights }}</span> ночей</p>
+    <!-- HERO -->
+
+
+
+    <!-- CARDS -->
+
+      <div class="row mt-5" data-test="cards">
+
+        {% import 'snippets.html' as snippets %}
+        {% for tour_id, tour in tours %}
+        {{ snippets.tour_card(tour_id, tour) }}
+        {% endfor %}
+
+    </div>
+{% endblock pagecontext %}

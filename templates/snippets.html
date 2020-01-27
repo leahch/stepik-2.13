@@ -1,0 +1,12 @@
+{% macro tour_card(id, tour) %}
+<div class="col-4" data-test="card">
+    <div class="card mb-3" >
+    <img src="{{ tour.picture | default('https://place-hold.it/300x200') }}" class="card-img-top img-fluid" data-test="picture">
+    <div class="card-body">
+      <h5 class="card-title">{{ tour.title }}</h5>
+     <p class="card-text">{{ tour.description | truncate(100) }}</p>
+        <a href="{{ url_for('tour', id=id) }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+    </div>
+</div>
+</div>
+{% endmacro %}
